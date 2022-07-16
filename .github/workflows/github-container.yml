@@ -12,13 +12,13 @@ jobs:
     env:
       VERSION: 1.${{ github.run_number }}
       REPO: ${{ github.event.repository.name }}
-      IMAGE: ghcr.io/${{GITHUB_REPOSITORY_OWNER}}/${{ github.event.repository.name }}
+      IMAGE: ghcr.io/izzi94/${{ github.event.repository.name }}
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Push to GitHub Container Registry
         run: |
-          echo ${{GITHUB_TOKEN}} | docker login ghcr.io --username ${{GITHUB_REPOSITORY_OWNER}} --password-stdin
+          echo ${{GITHUB_TOKEN}} | docker login ghcr.io --username izzi94 --password-stdin
           docker build -t ${{ env.IMAGE }}:$(echo ${GITHUB_REF##*/}) .
           docker push ${{ env.IMAGE }}:$(echo ${GITHUB_REF##*/})
