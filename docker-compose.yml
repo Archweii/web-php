@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  main:
+    build:
+      context: ""
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./src/core:/webphp/core

@@ -1,0 +1,24 @@
+name: Publish to GitHub Registry
+
+on: # Enable push when in new installation
+  push:
+    branches:
+      - php8.0-v1
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    env:
+      VERSION: 1.${{ github.run_number }}
+      REPO: ${{ github.event.repository.name }}
+      IMAGE: ghcr.io/${{GITHUB_REPOSITORY_OWNER}}/${{ github.event.repository.name }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push to GitHub Container Registry
+        run: |
+          echo ${{GITHUB_TOKEN}} | docker login ghcr.io --username ${{GITHUB_REPOSITORY_OWNER}} --password-stdin
+          docker build -t ${{ env.IMAGE }}:$(echo ${GITHUB_REF##*/}) .
+          docker push ${{ env.IMAGE }}:$(echo ${GITHUB_REF##*/})

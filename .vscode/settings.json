@@ -1,0 +1,17 @@
+{
+    "prettier.disableLanguages": [
+        "php",
+        "twig",
+        "html",
+        "es6",
+        "js"
+    ],
+    "editor.insertSpaces": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../static/css/"
+        }
+    ]
+}
