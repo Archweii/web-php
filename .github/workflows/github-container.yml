@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VERSION: 1.${{ github.run_number }}
       REPO: ${{ github.event.repository.name }}
-      IMAGE: ghcr.io/${{github.event.repository.owner.name}}/${{ github.event.repository.name }}
+      IMAGE: ghcr.io/${{github.event.repository.owner.name}}/${{ env.REPO }}
 
     steps:
       - uses: actions/checkout@v2
