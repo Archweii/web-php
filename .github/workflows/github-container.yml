@@ -11,7 +11,7 @@ jobs:
 
     env:
       REPO: ${{ github.event.repository.name }}
-      IMAGE: ghcr.io/${{github.event.repository.owner.name}}/${{ env.REPO }}
+      IMAGE: ghcr.io/${{github.event.repository.owner.name}}/${{ github.event.repository.name }}
 
     steps:
       - uses: actions/checkout@v2
